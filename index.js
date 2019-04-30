@@ -18,40 +18,47 @@ function GenerateJsonFromJsPlugin(config = {}) {
     }
   })
 
-  this.plugin = { name: 'GenerateJsonFromJsPlugin' };
+  this.plugin = 'GenerateJsonFromJsPlugin'
 }
 
 GenerateJsonFromJsPlugin.prototype.apply = function apply(compiler) {
   const emit = (compilation, callback) => {
-    // Adding this line causes a "rebuild" when the template file changes and indicate when the file has changed
     const fullFilePath = path.resolve(compiler.context, this.filePath)
-    compilation.fileDependencies.add(path.join(compiler.context, this.filePath));
-    process.stdout.write(`${chalk.green('Rebuilding ')}${this.filename}\n`);
+
+    // Adding this causes a "rebuild" when the template file changes and indicate when the file has changed
+    compilation.fileDependencies.add(fullFilePath)
+    process.stdout.write(`\n${chalk.green('Rebuilding ')}${this.filename}\n`)
 
     const jsModule = require(fullFilePath)
-    let json = null
+    let jsonValue = null
 
     if (typeof jsModule === 'function') {
-      json = JSON.stringify(jsModule(this.value), this.options.replacer, this.options.space)
+      jsonValue = jsModule(this.data)
     } else if (typeof jsModule === 'object') {
-      json = JSON.stringify({ ...jsModule, ...this.value }, this.options.replacer, this.options.space)
+      jsonValue = {
+        ...jsModule,
+        ...this.data
+      }
+
     }
 
-    if (json) {
+    if (jsonValue) {
+      const json = JSON.stringify(jsonValue, this.options.replacer, this.options.space)
+
       compilation.assets[this.filename] = {
         source: () => json,
         size: () => json.length,
-      };
+      }
     }
 
-    callback();
-  };
+    callback()
+  }
 
   if (compiler.hooks) {
-    compiler.hooks.emit.tapAsync(this.plugin, emit);
+    compiler.hooks.emit.tapAsync(this.plugin, emit)
   } else {
-    compiler.plugin('emit', emit);
+    compiler.plugin('emit', emit)
   }
-};
+}
 
-module.exports = GenerateJsonFromJsPlugin;
+module.exports = GenerateJsonFromJsPlugin

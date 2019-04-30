@@ -1,6 +1,8 @@
 # generate-json-from-js-webpack-plugin
 This webpack plugin generates a custom JSON asset from a JS module. This plugin is fairly barebones and was primarily created to easily generate a `manifest.json` file from a javascript module.
 
+Requires webpack 4.
+
 ## Installation
 To begin, you'll need to install `generate-json-from-js-webpack-plugin`
 
