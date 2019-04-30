@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "extends": [
+    "standard"
+  ],
+  "rules": {
+    "handle-callback-err"  : 0,
+    "key-spacing"          : 0,
+    "jsx-quotes"           : [2, "prefer-single"],
+    "object-curly-spacing" : [2, "always"],
+    "no-throw-literal"     : "off",
+    "react/no-did-update-set-state": "off"
+  }
+}

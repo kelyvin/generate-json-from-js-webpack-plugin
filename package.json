@@ -1,0 +1,34 @@
+{
+  "name": "generate-json-from-js-webpack-plugin",
+  "version": "0.1.0",
+  "description": "A webpack plugin that generates a custom JSON asset from a JS module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelyvin/generate-json-from-js-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "Kelvin Nguyen <kelyvin@caffeinecoding.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kelyvin/generate-json-from-js-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/kelyvin/generate-json-from-js-webpack-plugin#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "chalk": "^2.4.2",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "webpack": "^4.1.1"
+  }
+}
