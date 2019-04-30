@@ -6,7 +6,7 @@ const defaultJsonOptions = {
   space: 2
 }
 
-function GenerateJsonFromJsPlugin(config = {}) {
+function GenerateJsonFromJsPlugin (config = {}) {
   Object.assign(this, {
     ...config,
     filePath: config.path,
@@ -21,7 +21,7 @@ function GenerateJsonFromJsPlugin(config = {}) {
   this.plugin = 'GenerateJsonFromJsPlugin'
 }
 
-GenerateJsonFromJsPlugin.prototype.apply = function apply(compiler) {
+GenerateJsonFromJsPlugin.prototype.apply = function apply (compiler) {
   const emit = (compilation, callback) => {
     const fullFilePath = path.resolve(compiler.context, this.filePath)
 
@@ -39,7 +39,6 @@ GenerateJsonFromJsPlugin.prototype.apply = function apply(compiler) {
         ...jsModule,
         ...this.data
       }
-
     }
 
     if (jsonValue) {
@@ -47,7 +46,7 @@ GenerateJsonFromJsPlugin.prototype.apply = function apply(compiler) {
 
       compilation.assets[this.filename] = {
         source: () => json,
-        size: () => json.length,
+        size: () => json.length
       }
     }
 
