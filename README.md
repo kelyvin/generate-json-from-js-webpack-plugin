@@ -3,6 +3,8 @@ This webpack plugin generates a custom JSON asset from a JS module. This plugin 
 
 Requires webpack 4.
 
+**NOTE:** Even though the referenced JS module is being watched, this plugin does not recompile the JSON file on changes to the JS file. I would like some help on this as tracked [here](https://github.com/kelyvin/generate-json-from-js-webpack-plugin/issues/1)
+
 ## Installation
 To begin, you'll need to install `generate-json-from-js-webpack-plugin`
 
