@@ -1,6 +1,6 @@
 {
-  "name": "generate-json-from-js-webpack-plugin",
-  "version": "0.1.1",
+  "name": "generate-json-from-js-webpack-plugin-iman",
+  "version": "0.1.2",
   "description": "A webpack plugin that generates a custom JSON asset from a JS module",
   "main": "index.js",
   "scripts": {
