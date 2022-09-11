@@ -21,7 +21,7 @@ class GenerateJsonFromJsPlugin {
     this.plugin = PLUGIN_NAME;
   }
   apply(compiler) {
-    const emit = (compilation, callback) => {
+    const emit = (compilation) => {
       const fullFilePath = path.resolve(compiler.context, this.filePath);
 
       // Adding this causes a "rebuild" when the template file changes and indicate when the file has changed
@@ -52,12 +52,10 @@ class GenerateJsonFromJsPlugin {
           size: () => json.length,
         };
       }
-
-      callback();
     };
 
     if (compiler.hooks) {
-      compiler.hooks.emit.tapAsync(this.plugin, emit);
+      compiler.hooks.thisCompilation.tap(this.plugin, emit);
     } else {
       compiler.plugin("emit", emit);
     }
