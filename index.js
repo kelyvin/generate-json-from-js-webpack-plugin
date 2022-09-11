@@ -1,3 +1,4 @@
+const PLUGIN_NAME = "GenerateJsonFromJsPlugin";
 const path = require("path");
 
 const defaultJsonOptions = {
@@ -17,7 +18,7 @@ function GenerateJsonFromJsPlugin(config = {}) {
     },
   });
 
-  this.plugin = "GenerateJsonFromJsPlugin";
+  this.plugin = PLUGIN_NAME;
 }
 
 GenerateJsonFromJsPlugin.prototype.apply = function apply(compiler) {
