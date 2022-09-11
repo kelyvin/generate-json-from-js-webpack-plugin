@@ -1,5 +1,4 @@
 const path = require("path");
-const chalk = require("chalk");
 
 const defaultJsonOptions = {
   replacer: null,
@@ -27,7 +26,7 @@ GenerateJsonFromJsPlugin.prototype.apply = function apply(compiler) {
 
     // Adding this causes a "rebuild" when the template file changes and indicate when the file has changed
     compilation.fileDependencies.add(fullFilePath);
-    process.stdout.write(`\n${chalk.green("Rebuilding ")}${this.filename}\n`);
+    process.stdout.write(`\n${green("Rebuilding ")}${this.filename}\n`);
 
     const jsModule = require(fullFilePath);
     let jsonValue = null;
@@ -67,3 +66,7 @@ GenerateJsonFromJsPlugin.prototype.apply = function apply(compiler) {
 };
 
 module.exports = GenerateJsonFromJsPlugin;
+
+function green(str) {
+  return "\u001b[1m\u001b[32m" + str + "\u001b[39m\u001b[22m";
+}
