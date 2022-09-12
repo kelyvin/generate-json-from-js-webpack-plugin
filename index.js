@@ -12,7 +12,7 @@ class GenerateJsonFromJsPlugin {
       ...config,
       filePath: config.path,
       filename: config.filename,
-      data: config.data || {},
+      data: config.data || [],
       options: {
         ...defaultJsonOptions,
         ...config.options,
@@ -33,6 +33,8 @@ class GenerateJsonFromJsPlugin {
 
       if (typeof jsModule === "function") {
         jsonValue = jsModule(this.data);
+      } else if (jsModule instanceof Array) {
+        jsonValue = [...jsModule, ...this.data];
       } else if (typeof jsModule === "object") {
         jsonValue = {
           ...jsModule,
